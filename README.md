@@ -1,6 +1,7 @@
 # smolov-jr-pwa
 
 > Smolov Jr PWA
+App to calculate Smolov Jr cycles. Setup as a PWA so it remembers the weight you're working on and which days you've completed
 
 ## Build Setup
 
