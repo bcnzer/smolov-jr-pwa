@@ -14,6 +14,9 @@
               :items="defaultIncrements"
               :menu-props="{ transition: 'slide-y-transition' }"
               label="Increment"
+              hint="Recommend 5 if kg, 10 if pounds"
+              persistent-hint
+              xs12
             ></v-combobox>
           </v-card-text>
         </v-card>
