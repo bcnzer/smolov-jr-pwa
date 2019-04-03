@@ -8,20 +8,13 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'Smolov Jr Calculator',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
-      }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   /*
@@ -43,18 +36,32 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    'nuxt-webfontloader',
+    '@nuxtjs/sentry',
     '@nuxtjs/pwa',
-    [
-      '@nuxtjs/robots',
-      {
-        UserAgent: '*',
-        Disallow: '/'
-      }
-    ]
+    '@nuxtjs/robots'
   ],
+
+  robots: {
+    UserAgent: '*',
+    Disallow: '/' // temporarily disabled - but while I'm still working on it
+  },
 
   manifest: {
     name: 'Smolov Jr Calculator'
+  },
+
+  sentry: {
+    dsn: 'https://fca7608bf7b74e05a4cc55a9427339eb@sentry.io/1429051', // Enter your project's DSN here
+    config: {
+      disabled: true // temporarily disabled - but while I'm still working on it
+    } // Additional config
+  },
+
+  webfontloader: {
+    google: {
+      families: ['Roboto:300,400,500,700|Material+Icons'] // Loads Lato font with weights 400 and 700
+    }
   },
 
   /*
