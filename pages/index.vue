@@ -6,6 +6,7 @@
           <v-card-text>
             <v-text-field
               v-model="oneRepMax"
+              type="number"
               label="One Rep Max"
               clearable
             ></v-text-field>
@@ -22,28 +23,40 @@
         </v-card>
       </v-flex>
     </v-layout>
+
+    <v-layout row wrap>
+      <v-flex xs12>
+        <week :starting-weight="weekOneWeight"></week>
+      </v-flex>
+      <!-- <v-flex xs12>
+        <week :starting-weight="weekTwoWeight"></week>
+      </v-flex>
+      <v-flex xs12>
+        <week :starting-weight="weekThreeWeight"></week>
+      </v-flex> -->
+    </v-layout>
   </div>
 </template>
 
 <script>
+import week from '~/components/week'
+
 export default {
+  components: {
+    week
+  },
+
   data: () => ({
     defaultIncrements: [1, 2, 2.5, 5, 10],
     selectedIncrement: null,
-    oneRepMax: null
-  })
+    oneRepMax: null,
+    weekOneWeight: 0,
+    weekTwoWeight: 0,
+    weekThreeWeight: 0
+  }),
+
+  computed: {
+    // weekOneStartingWeight: function() {}
+  }
 }
 </script>
-
-<style>
-table.v-table thead td:not(:nth-child(1)),
-table.v-table tbody td:not(:nth-child(1)),
-table.v-table thead th:not(:nth-child(1)),
-table.v-table tbody th:not(:nth-child(1)),
-table.v-table thead td:first-child,
-table.v-table tbody td:first-child,
-table.v-table thead th:first-child,
-table.v-table tbody th:first-child {
-  padding: 0 12px;
-}
-</style>
