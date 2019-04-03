@@ -35,6 +35,3 @@ jobs:
 
       # run tests!
       - run: yarn test
-
-      # buid my app
-      - build: yarn build
