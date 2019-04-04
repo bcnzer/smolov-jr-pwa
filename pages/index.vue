@@ -2,7 +2,7 @@
   <div>
     <v-layout justify-center row>
       <v-flex xs12 sm10 md6>
-        <v-card>
+        <v-card class="mb-3">
           <v-card-text>
             <v-text-field
               v-model="oneRepMax"
@@ -15,8 +15,6 @@
               :items="defaultIncrements"
               :menu-props="{ transition: 'slide-y-transition' }"
               label="Increment"
-              hint="Recommend 5 if kg, 10 if pounds"
-              persistent-hint
               xs12
             ></v-combobox>
           </v-card-text>
@@ -26,14 +24,18 @@
 
     <v-layout row wrap>
       <v-flex xs12>
-        <week :starting-weight="weekOneWeight"></week>
-      </v-flex>
-      <!-- <v-flex xs12>
-        <week :starting-weight="weekTwoWeight"></week>
+        <week :one-rep-max="orm"></week>
       </v-flex>
       <v-flex xs12>
-        <week :starting-weight="weekThreeWeight"></week>
-      </v-flex> -->
+        <week week="2" :one-rep-max="orm" :increment="selectedIncrement"></week>
+      </v-flex>
+      <v-flex xs12>
+        <week
+          week="3"
+          :one-rep-max="orm"
+          :increment="selectedIncrement * 2"
+        ></week>
+      </v-flex>
     </v-layout>
   </div>
 </template>
@@ -48,15 +50,16 @@ export default {
 
   data: () => ({
     defaultIncrements: [1, 2, 2.5, 5, 10],
-    selectedIncrement: null,
-    oneRepMax: null,
-    weekOneWeight: 0,
-    weekTwoWeight: 0,
-    weekThreeWeight: 0
+    selectedIncrement: 2.5,
+    oneRepMax: null
   }),
 
   computed: {
-    // weekOneStartingWeight: function() {}
+    orm: function() {
+      if (!this.oneRepMax) return 0
+
+      return Number(this.oneRepMax)
+    }
   }
 }
 </script>
