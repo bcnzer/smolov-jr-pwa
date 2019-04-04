@@ -10,13 +10,13 @@
               label="One Rep Max"
               clearable
             ></v-text-field>
-            <v-combobox
+            <v-select
               v-model="selectedIncrement"
               :items="defaultIncrements"
               :menu-props="{ transition: 'slide-y-transition' }"
               label="Increment"
               xs12
-            ></v-combobox>
+            ></v-select>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -57,8 +57,19 @@ export default {
   computed: {
     orm: function() {
       if (!this.oneRepMax) return 0
+      localStorage.oneRepMax = this.oneRepMax
 
       return Number(this.oneRepMax)
+    }
+  },
+
+  created: function() {
+    this.oneRepMax = localStorage.oneRepMax
+    if (
+      localStorage.selectedIncrement &&
+      this.defaultIncrements.findIndex(localStorage.selectedIncrement) !== -1
+    ) {
+      this.selectedIncrement = localStorage.selectedIncrement
     }
   }
 }

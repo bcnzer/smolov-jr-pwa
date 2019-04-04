@@ -46,8 +46,8 @@ export default {
       default: 0
     },
     week: {
-      type: Number,
-      default: 1
+      type: String,
+      default: '1'
     }
   },
 
