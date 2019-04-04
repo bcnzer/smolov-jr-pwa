@@ -3,13 +3,22 @@
     <v-toolbar fixed app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn icon aria-label="Toggle dark mode" @click.native="toggleDark()">
-        <v-icon>tonality</v-icon>
-      </v-btn>
+      <v-menu bottom left>
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+        </template>
 
-      <v-btn icon aria-label="Info">
-        <v-icon @click.native="aboutPage()">info</v-icon>
-      </v-btn>
+        <v-list>
+          <v-list-tile @click.native="toggleDark()">
+            <v-list-tile-title>{{ themeName }}</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile @click.native="aboutPage()">
+            <v-list-tile-title>About</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
 
     <v-content>
@@ -26,6 +35,12 @@ export default {
     return {
       title: 'Smolov Jr Calculator',
       goDark: false
+    }
+  },
+
+  computed: {
+    themeName: function() {
+      return `${this.goDark ? 'Light' : 'Dark'} theme`
     }
   },
 

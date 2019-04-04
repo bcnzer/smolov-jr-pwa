@@ -3,7 +3,7 @@
     <v-flex xs12 sm10 md6>
       <v-data-table
         :items="weeks"
-        class="elevation-1 mt-3"
+        class="elevation-1 mt-2"
         :headers="headers"
         hide-actions
       >
@@ -18,7 +18,11 @@
             {{ props.item.sets }}
           </td>
           <td style="padding: 0 16px" class="text-xs-center">
-            {{ weight(props.item.reps) }}
+            <transition name="slide-fade" mode="out-in">
+              <div :key="weight(props.item.reps)">
+                {{ weight(props.item.reps) }}
+              </div>
+            </transition>
           </td>
         </template>
       </v-data-table>
@@ -27,90 +31,131 @@
 </template>
 
 <script>
+import { roundWeight } from '~/utils/round_weight.js'
+
 export default {
   name: 'Week',
 
   props: {
-    startingWeight: {
+    oneRepMax: {
       type: Number,
       default: 0
+    },
+    increment: {
+      type: Number,
+      default: 0
+    },
+    week: {
+      type: String,
+      default: '1'
     }
   },
 
   data: () => ({
-    headers: [
-      {
-        text: null,
-        align: 'left',
-        value: 'action',
-        sortable: false
-      },
-      {
-        text: 'Sets',
-        align: 'centre',
-        value: 'sets',
-        sortable: false
-      },
-      {
-        text: 'Reps',
-        align: 'centre',
-        value: 'reps',
-        sortable: false
-      },
-      {
-        text: 'Weight',
-        align: 'centre',
-        value: 'weight',
-        sortable: false
-      }
-    ],
     weeks: [
       {
         dayOfWeek: 'Monday',
         reps: 6,
-        sets: 6,
-        weight: null
+        sets: 6
       },
       {
         dayOfWeek: 'Wednesday',
         reps: 7,
-        sets: 5,
-        weight: null
+        sets: 5
       },
       {
         dayOfWeek: 'Friday',
         reps: 8,
-        sets: 4,
-        weight: null
+        sets: 4
       },
       {
         dayOfWeek: 'Saturday',
         reps: 10,
-        sets: 3,
-        weight: null
+        sets: 3
       }
-    ],
-    lssss: null
+    ]
   }),
+
+  computed: {
+    headers: function() {
+      return [
+        {
+          text: `Week ${this.week}`,
+          align: 'left',
+          value: 'action',
+          sortable: false
+        },
+        {
+          text: 'Sets',
+          align: 'centre',
+          value: 'sets',
+          sortable: false
+        },
+        {
+          text: 'Reps',
+          align: 'centre',
+          value: 'reps',
+          sortable: false
+        },
+        {
+          text: 'Weight',
+          align: 'centre',
+          value: 'weight',
+          sortable: false
+        }
+      ]
+    }
+  },
 
   methods: {
     weight: function(reps) {
+      if (this.oneRepMax === 0) return '-'
+
+      let weight = 0
+
       switch (reps) {
         case 6:
-          return this.roundWeight(this.weight * 0.7)
+          weight = roundWeight(this.oneRepMax * 0.7)
+          break
         case 7:
-          return this.roundWeight(this.weight * 0.75)
+          weight = roundWeight(this.oneRepMax * 0.75)
+          break
         case 8:
-          return this.roundWeight(this.weight * 0.8)
+          weight = roundWeight(this.oneRepMax * 0.8)
+          break
         case 10:
-          return this.roundWeight(this.weight * 0.85)
+          weight = roundWeight(this.oneRepMax * 0.85)
+          break
+        default:
+          return 0
       }
 
-      return null
-    },
-    roundWeight: function(weight) {
-      return Math.round(weight / 5) * 5
+      return weight + this.increment
     }
   }
 }
 </script>
+
+<style>
+table.v-table thead td:not(:nth-child(1)),
+table.v-table tbody td:not(:nth-child(1)),
+table.v-table thead th:not(:nth-child(1)),
+table.v-table tbody th:not(:nth-child(1)),
+table.v-table thead td:first-child,
+table.v-table tbody td:first-child,
+table.v-table thead th:first-child,
+table.v-table tbody th:first-child {
+  padding: 0 12px;
+}
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+</style>
