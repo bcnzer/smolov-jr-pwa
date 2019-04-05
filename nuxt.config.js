@@ -48,7 +48,9 @@ export default {
   },
 
   manifest: {
-    name: 'Smolov Jr Calculator'
+    name: 'Smolov Jr Calculator',
+    short_name: 'Smolov Jr Calc',
+    description: 'Calculator for Smolov Jr'
   },
 
   sentry: {

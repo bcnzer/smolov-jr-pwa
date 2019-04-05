@@ -45,7 +45,6 @@ export default {
   },
 
   created: function() {
-    console.log(localStorage.darkMode)
     this.darkMode = localStorage.darkMode === 'true'
   },
 

@@ -1,11 +1,10 @@
 <template>
   <v-layout justify-center row>
     <v-flex xs12>
-      <v-card>
-        <v-img
-          height="200px"
-          src="jesper-aggergaard-539134-unsplash.jpg"
-        ></v-img>
+      <nuxt-link to="/">Back to calculator</nuxt-link>
+
+      <v-card class="mt-3">
+        <v-img height="200px" src="lifter.jpg"></v-img>
         <v-card-title class="subheading"
           >Generate a 3 week workout based on your current 1 rep maximum using
           the Smolov Jr formula</v-card-title
@@ -45,7 +44,7 @@
           </p>
         </v-card-text>
         <v-card-actions>
-          <v-btn nuxt="/" color="primary">Home</v-btn>
+          <v-btn nuxt="true" to="/" color="primary">Back to calculator</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>

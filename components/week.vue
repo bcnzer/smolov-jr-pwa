@@ -3,21 +3,21 @@
     <v-flex xs12 sm10 md6>
       <v-data-table
         :items="weeks"
-        class="elevation-1 mt-2"
+        class="elevation-1 mt-3"
         :headers="headers"
         hide-actions
       >
         <template v-slot:items="props">
-          <td style="padding: 0 8px 0px 16px">
+          <td style="padding: 0 8 0 12px">
             {{ props.item.dayOfWeek }}
           </td>
-          <td style="padding: 0 16px" class="text-xs-center">
+          <td style="padding: 0 8px" class="text-xs-center">
             {{ props.item.reps }}
           </td>
-          <td style="padding: 0 16px" class="text-xs-center">
+          <td style="padding: 0 8px" class="text-xs-center">
             {{ props.item.sets }}
           </td>
-          <td style="padding: 0 16px" class="text-xs-center">
+          <td style="padding: 0 8px" class="text-xs-center">
             <transition name="slide-fade" mode="out-in">
               <div :key="weight(props.item.reps)">
                 {{ weight(props.item.reps) }}
@@ -80,9 +80,9 @@ export default {
     headers: function() {
       return [
         {
-          text: `Week ${this.week}`,
+          text: `📅 WEEK ${this.week}`,
           align: 'left',
-          value: 'action',
+          value: 'dayOfWeek',
           sortable: false
         },
         {
@@ -155,7 +155,7 @@ table.v-table tbody th:first-child {
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active for <2.1.8 */ {
-  transform: translateX(10px);
+  transform: translateX(5px);
   opacity: 0;
 }
 </style>
