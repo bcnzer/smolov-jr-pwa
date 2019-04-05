@@ -1,7 +1,6 @@
-# Smolov Jr calculator
+# Smolov Jr Calculator PWA
 
-> Smolov Jr PWA
-App to calculate Smolov Jr cycles. Enter your One Rep Max (aka 1RM) and it determines the reps, sets and weights for the next three weeks. 
+PWA to calculate Smolov Jr cycles. Enter your One Rep Max (aka 1RM) and it determines the reps, sets and weights for the next three weeks. 
 
 It's a PWA so it works offline, remembers the 1RM and increment. Also have a fancy schmancy dark theme. On Android it will asks if you want to create an icon for your home page.
 
