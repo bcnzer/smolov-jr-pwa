@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       title: 'Smolov Jr Calculator',
-      darkMode: false
+      darkMode: true
     }
   },
 
