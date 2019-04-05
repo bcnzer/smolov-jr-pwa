@@ -1,5 +1,5 @@
 <template>
-  <v-app :dark="goDark">
+  <v-app :dark="darkMode">
     <v-toolbar fixed app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
@@ -34,19 +34,25 @@ export default {
   data() {
     return {
       title: 'Smolov Jr Calculator',
-      goDark: false
+      darkMode: false
     }
   },
 
   computed: {
     themeName: function() {
-      return `${this.goDark ? 'Light' : 'Dark'} theme`
+      return `${this.darkMode ? 'Light' : 'Dark'} theme`
     }
+  },
+
+  created: function() {
+    console.log(localStorage.darkMode)
+    this.darkMode = localStorage.darkMode === 'true'
   },
 
   methods: {
     toggleDark: function() {
-      this.goDark = !this.goDark
+      this.darkMode = !this.darkMode
+      localStorage.darkMode = this.darkMode
     },
     aboutPage: function() {
       this.$router.push('/about')
