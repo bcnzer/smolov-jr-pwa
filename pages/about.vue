@@ -44,6 +44,9 @@
             >
           </p>
         </v-card-text>
+        <v-card-actions>
+          <v-btn nuxt="/" color="primary">Home</v-btn>
+        </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
