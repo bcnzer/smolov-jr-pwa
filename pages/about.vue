@@ -44,7 +44,13 @@
           </p>
         </v-card-text>
         <v-card-actions>
-          <v-btn nuxt="true" to="/" color="primary">Back to calculator</v-btn>
+          <v-btn
+            aria-label="Back to calculator"
+            nuxt="true"
+            to="/"
+            color="primary"
+            >Back to calculator</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-flex>

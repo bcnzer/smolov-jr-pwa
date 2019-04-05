@@ -8,6 +8,7 @@
               v-model="oneRepMax"
               type="number"
               label="One Rep Max"
+              aria-label="One Rep Max"
               clearable
             ></v-text-field>
             <v-select
@@ -15,6 +16,7 @@
               :items="defaultIncrements"
               :menu-props="{ transition: 'slide-y-transition' }"
               label="Increment"
+              aria-label="Increment"
               xs12
             ></v-select>
           </v-card-text>
