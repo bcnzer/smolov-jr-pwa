@@ -1,7 +1,7 @@
 {
   "name": "smolov-jr-pwa",
   "version": "1.0.0",
-  "description": "Smolov Jr PWA",
+  "description": "Smolov Jr Calculator",
   "author": "Ben Chartrand",
   "private": true,
   "scripts": {
@@ -22,7 +22,7 @@
     "dexie": "^2.0.4",
     "nuxt": "^2.5.1",
     "nuxt-webfontloader": "^1.0.0",
-    "vuetify": "^1.5.5",
+    "vuetify": "^1.5.9",
     "vuetify-loader": "^1.2.1"
   },
   "devDependencies": {

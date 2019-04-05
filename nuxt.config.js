@@ -54,7 +54,7 @@ export default {
   sentry: {
     dsn: 'https://fca7608bf7b74e05a4cc55a9427339eb@sentry.io/1429051', // Enter your project's DSN here
     config: {
-      disabled: true // temporarily disabled - but while I'm still working on it
+      // disabled: true // temporarily disabled - but while I'm still working on it
     } // Additional config
   },
 
