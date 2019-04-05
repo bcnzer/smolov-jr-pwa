@@ -43,8 +43,8 @@ export default {
   ],
 
   robots: {
-    UserAgent: '*',
-    Disallow: '/' // temporarily disabled - but while I'm still working on it
+    UserAgent: '*'
+    // Disallow: '/' // temporarily disabled - but while I'm still working on it
   },
 
   manifest: {
